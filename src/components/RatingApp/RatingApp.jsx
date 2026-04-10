@@ -15,6 +15,7 @@ import {
     getMoviesByGenre,
     getMoviesByCompany
 } from "../../services/MovieApi.js";
+import MovieModal from "../MovieModal.jsx";
 
 const RatingApp = () => {
     const [movies, setMovies] = useState([]);
@@ -26,8 +27,9 @@ const RatingApp = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
-    // ✅ Single effect — fires whenever page OR any filter changes
+
     useEffect(() => {
         const fetchMovies = async () => {
             try {
@@ -119,7 +121,7 @@ const RatingApp = () => {
 
                 <div className="movies-grid">
                     {movies.length > 0 ? (
-                        movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+                        movies.map((movie) => <MovieCard key={movie.id} movie={movie} onClick={() => setSelectedMovie(movie)} />)
                     ) : (
                         !loading && <p className="status-text">No movies found</p>
                     )}
@@ -132,6 +134,9 @@ const RatingApp = () => {
                     onNext={() => setCurrentPage(p => p + 1)} 
                 />
             </div>
+            {selectedMovie && (
+                <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
+            )}
         </div>
     );
 };

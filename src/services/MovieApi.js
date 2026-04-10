@@ -36,3 +36,7 @@ export async function getMoviesByGenre(genre, page = 1) {
 export async function getMoviesByCompany(company, page = 1) {
     return fetchJson(`${API_BASE}/company?name=${encodeURIComponent(company)}&page=${page}`, "Failed to fetch movies by company");
 }
+
+export async function getMovieById(id) {
+    const response = await  fetch(`${API_BASE}`)
+}

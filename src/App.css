@@ -369,3 +369,244 @@ body {
         height: 320px;
     }
 }
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-box {
+    background: #12121e;
+    border-radius: 14px;
+    max-width: 860px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    color: #fff;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-backdrop {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center top;
+    border-radius: 14px 14px 0 0;
+    position: relative;
+}
+
+.modal-backdrop-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, #12121e 100%);
+    border-radius: 14px 14px 0 0;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-top {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: -60px;
+    position: relative;
+}
+
+.modal-poster {
+    width: 150px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #12121e;
+    align-self: flex-start;
+}
+
+.modal-main-info {
+    flex: 1;
+    padding-top: 60px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 0.75rem;
+}
+
+.modal-tag {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.78rem;
+    color: #ccc;
+}
+
+.modal-meta-row {
+    display: flex;
+    gap: 16px;
+    font-size: 0.88rem;
+    color: #aaa;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.modal-meta-row span:first-child {
+    color: #f5c518;
+    font-weight: 500;
+}
+
+.modal-director {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.75rem;
+}
+
+.modal-overview {
+    font-size: 0.92rem;
+    color: #bbb;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.modal-financials {
+    display: flex;
+    gap: 24px;
+}
+
+.modal-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.9rem;
+}
+
+.label {
+    font-size: 0.75rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modal-cast-section {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.25rem;
+}
+
+.modal-cast-section h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+    color: #eee;
+}
+
+.modal-cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 12px;
+}
+
+.cast-card {
+    text-align: center;
+}
+
+.cast-photo {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.cast-placeholder {
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #aaa;
+    border-radius: 8px;
+    aspect-ratio: 2/3;
+}
+
+.cast-name {
+    font-size: 0.75rem;
+    color: #ddd;
+    margin: 6px 0 2px;
+    font-weight: 500;
+}
+
+.cast-character {
+    font-size: 0.7rem;
+    color: #888;
+    margin: 0;
+}
+
+.modal-status {
+    padding: 2rem;
+    text-align: center;
+    color: #aaa;
+}
+
+.modal-status.error {
+    color: #e05;
+}
+.modal-original-title {
+    font-size: 0.85rem;
+    color: #888;
+    margin: -0.4rem 0 0.75rem;
+    font-style: italic;
+}
+
+.modal-lang {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.78rem;
+    color: #ccc;
+}
+
+@media (max-width: 560px) {
+    .modal-top {
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .modal-poster {
+        width: 120px;
+        border: none;
+    }
+
+    .modal-main-info {
+        padding-top: 0;
+    }
+}

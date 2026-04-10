@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, onClick }) => {
     const title = movie.title || "Unknown Title";
     const overview = movie.overview || "No description available.";
     const voteAverage = movie.vote_average ?? "N/A";
@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
         : "/no-poster.jpg";
 
     return (
-        <div className="movie-card">
+        <div className="movie-card" onClick={onClick}>
             <img
                 src={imageUrl}
                 alt={title}
