@@ -40,3 +40,21 @@ export async function getMoviesByCompany(company, page = 1) {
 export async function getMovieById(id) {
     const response = await  fetch(`${API_BASE}`)
 }
+
+export const getActorDetails = async (actorId) => {
+    const res = await fetch(`/api/movie/actor/${actorId}`);
+    if (!res.ok) throw new Error("Failed to fetch actor");
+    return res.json();
+};
+
+export const getMoviesByActor = async (actorId, page = 1) => {
+    const res = await fetch(`/api/movie/actor/${actorId}/movies?page=${page}`);
+    if (!res.ok) throw new Error("Failed to fetch actor movies");
+    return res.json();
+};
+
+export const getMoviesByActorName = async (actorName, page = 1) => {
+    const res = await fetch(`/api/movie/actor/search?name=${encodeURIComponent(actorName)}&page=${page}`);
+    if (!res.ok) throw new Error("Actor not found");
+    return res.json();
+};

@@ -610,3 +610,94 @@ body {
         padding-top: 0;
     }
 }
+.actor-top {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.actor-photo {
+    width: 160px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.actor-info {
+    flex: 1;
+}
+
+.actor-bio {
+    font-size: 0.88rem;
+    color: #bbb;
+    line-height: 1.7;
+    margin-top: 0.75rem;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.actor-movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 12px;
+}
+
+.actor-movie-card {
+    cursor: pointer;
+    text-align: center;
+    transition: opacity 0.15s;
+}
+
+.actor-movie-card:hover {
+    opacity: 0.75;
+}
+
+.actor-movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+.actor-search-bar {
+    margin: 0.5rem 0;
+}
+
+.actor-search-input {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+}
+
+.actor-search-input::placeholder { color: #888; }
+.actor-search-input:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.35);
+}
+
+.actor-filter-label {
+    font-size: 0.9rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0.25rem 0 0.75rem;
+}
+
+.actor-filter-label strong { color: #fff; }
+
+.actor-filter-label button {
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0 4px;
+}
+
+.actor-filter-label button:hover { color: #fff; }
