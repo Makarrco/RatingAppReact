@@ -3,7 +3,7 @@ import ActorModal from "./ActorModal.jsx";
 
 const IMG_BASE = "https://image.tmdb.org/t/p/";
 
-const MovieModal = ({ movie, onClose }) => {
+const MovieModal = ({ movie, onClose, lang }) => {
     const [cast, setCast] = useState([]);
     const [castLoading, setCastLoading] = useState(true);
     const [selectedActorId, setSelectedActorId] = useState(null);
@@ -18,7 +18,7 @@ const MovieModal = ({ movie, onClose }) => {
         const fetchCast = async () => {
             try {
                 setCastLoading(true);
-                const res = await fetch(`/api/movie/${movie.id}/details`);
+                const res = await fetch(`https://localhost:7149/api/movie/${movie.id}/details?lang=${lang}`);
                 if (!res.ok) throw new Error();
                 const data = await res.json();
                 // handle both camelCase (C# response) and snake_case

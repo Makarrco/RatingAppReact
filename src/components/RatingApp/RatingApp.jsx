@@ -17,6 +17,7 @@ import {
     getMoviesByCompany,
     getMoviesByActorName,
 } from "../../services/MovieApi.js";
+import LanguageSwitcher from "./LanguageSwitcher.jsx";
 
 const RatingApp = () => {
     const [movies, setMovies] = useState([]);
@@ -32,6 +33,7 @@ const RatingApp = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [lang, setLang] = useState("en-US");
 
     useEffect(() => {
         const handler = (e) => setSelectedMovie(e.detail);
@@ -47,21 +49,21 @@ const RatingApp = () => {
                 let data;
 
                 if (searchTerm.trim()) {
-                    data = await searchMovies(searchTerm, currentPage);
+                    data = await searchMovies(searchTerm, currentPage, lang);
                 } else if (actorSearch.trim()) {
-                    const result = await getMoviesByActorName(actorSearch, currentPage);
+                    const result = await getMoviesByActorName(actorSearch, currentPage, lang);
                     setSelectedActor({ name: result.actor.name });
                     data = result.movies;
                 } else if (selectedCompany) {
-                    data = await getMoviesByCompany(selectedCompany, currentPage);
+                    data = await getMoviesByCompany(selectedCompany, currentPage, lang);
                 } else if (selectedGenre) {
-                    data = await getMoviesByGenre(selectedGenre, currentPage);
+                    data = await getMoviesByGenre(selectedGenre, currentPage, lang);
                 } else {
                     switch (selectedCategory) {
-                        case "top-rated":   data = await getTopRatedMovies(currentPage); break;
-                        case "now-playing": data = await getNowPlayingMovies(currentPage); break;
-                        case "upcoming":    data = await getUpcomingMovies(currentPage); break;
-                        default:            data = await getPopularMovies(currentPage); break;
+                        case "top-rated":   data = await getTopRatedMovies(currentPage, lang); break;
+                        case "now-playing": data = await getNowPlayingMovies(currentPage, lang); break;
+                        case "upcoming":    data = await getUpcomingMovies(currentPage, lang); break;
+                        default:            data = await getPopularMovies(currentPage, lang); break;
                     }
                 }
 
@@ -77,7 +79,7 @@ const RatingApp = () => {
         };
 
         fetchMovies();
-    }, [currentPage, searchTerm, actorSearch, selectedGenre, selectedCompany, selectedCategory]);
+    }, [currentPage, searchTerm, actorSearch, selectedGenre, selectedCompany, selectedCategory, lang]);
 
     const handleSearch = () => {
         setActorSearch("");
@@ -139,8 +141,15 @@ const RatingApp = () => {
 
     return (
         <div className="app-wrapper">
-            <h1 className="title">CineLuxe</h1>
-            <p className="subtitle">Discover premium cinema picks</p>
+            
+            <div className="header-row">
+                <div>
+                    <h1 className="title">CineLuxe</h1>
+                    <p className="subtitle">Discover premium cinema picks</p>
+                </div>
+                <LanguageSwitcher lang={lang} setLang={(code) => { setLang(code); setCurrentPage(1); }} />
+            </div>
+            
 
             <div className="main-box">
                 <SearchBar
@@ -205,6 +214,7 @@ const RatingApp = () => {
                 <MovieModal
                     movie={selectedMovie}
                     onClose={() => setSelectedMovie(null)}
+                    lang={lang}
                 />
             )}
         </div>

@@ -570,6 +570,104 @@ body {
     color: #888;
     margin: 0;
 }
+.modal-box::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-box {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    padding: 0 1rem;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+}
+.lang-dropdown {
+    position: relative;
+}
+
+.lang-selected {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+
+.lang-selected:hover {
+    background: rgba(255,255,255,0.13);
+}
+
+.lang-arrow {
+    font-size: 0.75rem;
+    color: #aaa;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+.lang-arrow.open {
+    transform: rotate(180deg);
+}
+
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 999;
+    min-width: 160px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 0.88rem;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.1s;
+}
+
+.lang-option:hover {
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+}
+
+.lang-option.active {
+    color: #fff;
+    font-weight: 500;
+}
+
+.lang-check {
+    margin-left: auto;
+    color: #f5c518;
+    font-size: 0.85rem;
+}
 
 .modal-status {
     padding: 2rem;
@@ -632,8 +730,6 @@ body {
     color: #bbb;
     line-height: 1.7;
     margin-top: 0.75rem;
-    max-height: 180px;
-    overflow-y: auto;
 }
 
 .actor-movies-grid {
